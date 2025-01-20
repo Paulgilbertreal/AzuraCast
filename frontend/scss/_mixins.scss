@@ -1,22 +1,13 @@
-@import 'mixins/background-variant';
-@import 'mixins/border-radius';
-@import 'mixins/breakpoint';
-@import 'mixins/clearfix';
-@import 'mixins/float';
-@import 'mixins/font-size';
-@import 'mixins/form';
-@import 'mixins/grid';
-@import 'mixins/grid-framework';
-@import 'mixins/hover';
-@import 'mixins/image';
-@import 'mixins/list';
-@import 'mixins/material-icons';
-@import 'mixins/nav-divider';
-@import 'mixins/reset-text';
-@import 'mixins/screenreader';
-@import 'mixins/text-alignment';
-@import 'mixins/text-emphasis';
-@import 'mixins/text-hide';
-@import 'mixins/text-truncate';
-@import 'mixins/transition';
-@import 'mixins/typography';
+@mixin might-overflow() {
+  // Pulled from:
+  // https://stackoverflow.com/questions/5474871/html-how-can-i-show-tooltip-only-when-ellipsis-is-activated
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
+  &:hover {
+    text-overflow: clip;
+    white-space: normal;
+    word-break: break-all;
+  }
+}

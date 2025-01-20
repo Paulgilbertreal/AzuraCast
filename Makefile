@@ -1,15 +1,22 @@
+SHELL=/bin/bash
 .PHONY: *
 
 list:
 	@LC_ALL=C $(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$'
 
+install: # Developer mode installation
+	bash ./docker.sh install-dev
+
 install-cloud-ide:
-	cp docker-compose.cloudide.yml docker-compose.yml
+	cp docker-compose.sample.yml docker-compose.yml
+	cp docker-compose.cloudide.yml docker-compose.override.yml
+
 	cp dev.env .env
 	cp azuracast.dev.env azuracast.env
 
+	docker-compose pull
 	docker-compose build
-	docker-compose run --rm --user="azuracast" web azuracast_install "$@"
+	docker-compose run --rm web azuracast_install "$@"
 
 up:
 	docker-compose up -d
@@ -23,13 +30,22 @@ build: # Rebuild all containers and restart
 	docker-compose build
 	$(MAKE) restart
 
+post-update:
+	$(MAKE) down
+	docker-compose run --rm web azuracast_dev_install --update
+	$(MAKE) up
+
 update: # Update everything (i.e. after a branch update)
 	docker-compose build
-	$(MAKE) down
-	docker-compose run --rm --user=azuracast web composer install
-	docker-compose run --rm --user=azuracast web azuracast_cli azuracast:setup:initialize
-	$(MAKE) frontend-build
-	$(MAKE) up
+	$(MAKE) post-update
+
+build-depot: # Rebuild all containers with Depot and restart
+	depot bake -f docker-compose.yml -f docker-compose.override.yml --load
+	$(MAKE) restart
+
+update-depot: # Update everything using Depot
+	depot bake -f docker-compose.yml -f docker-compose.override.yml --load
+	$(MAKE) post-update
 
 test:
 	docker-compose exec --user=azuracast web composer run cleanup-and-test
@@ -37,11 +53,12 @@ test:
 bash:
 	docker-compose exec --user=azuracast web bash
 
-frontend-bash:
-	docker-compose -f frontend/docker-compose.yml build
-	docker-compose --env-file=.env -f frontend/docker-compose.yml run -e NODE_ENV=development --rm frontend
+bash-root:
+	docker-compose exec web bash
 
-frontend-build:
-	docker-compose -f frontend/docker-compose.yml build
-	docker-compose --env-file=.env -f frontend/docker-compose.yml run -e NODE_ENV=development --rm frontend npm run dev-build
+generate-locales:
+	docker-compose exec --user=azuracast web azuracast_cli locale:generate
+
+import-locales:
+	docker-compose exec --user=azuracast web azuracast_cli locale:import
 

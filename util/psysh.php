@@ -3,25 +3,19 @@
 declare(strict_types=1);
 
 use App\Environment;
-use App\Locale;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LogLevel;
 
-$autoloader = require dirname(__DIR__) . '/vendor/autoload.php';
+require dirname(__DIR__) . '/vendor/autoload.php';
 
-$di = \App\AppFactory::buildContainer($autoloader, 
+$app = App\AppFactory::createApp(
     [
-        App\Environment::BASE_DIR => dirname(__DIR__),
-        App\Environment::LOG_LEVEL => LogLevel::DEBUG
+        App\Environment::LOG_LEVEL => LogLevel::DEBUG,
     ]
 );
-
-$app = \App\AppFactory::buildAppFromContainer($di);
+$di = $app->getContainer();
 
 $env = $di->get(Environment::class);
-
-$locale = Locale::createForCli($env);
-$locale->register();
-unset($locale);
+App\Enums\SupportedLocales::createForCli($env);
 
 $em = $di->get(EntityManagerInterface::class);

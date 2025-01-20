@@ -1,13 +1,14 @@
-![](https://github.com/AzuraCast/AzuraCast/raw/main/resources/azuracast.png)
+![](https://github.com/AzuraCast/AzuraCast/raw/main/resources/azuracast.png)![](https://static.scarf.sh/a.png?x-pxid=d5169ead-cdcf-482c-ab64-c7137d3f8769)
 
 # AzuraCast: A Simple, Self-Hosted Web Radio Management Suite
 
 [![Build Status](https://github.com/azuracast/azuracast/workflows/Build,%20Test%20and%20Publish/badge.svg)](https://github.com/AzuraCast/AzuraCast/actions)
 [![Latest Stable Release](https://img.shields.io/packagist/v/azuracast/azuracast.svg?label=latest+stable+version)]()
-[![Apache 2.0 License](https://img.shields.io/github/license/azuracast/azuracast.svg)]()
-[![Ethical Open Source](https://img.shields.io/badge/open-ethical-%234baaaa)](https://ethicalsource.dev/definition/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/azuracast/azuracast_radio.svg)](https://hub.docker.com/r/azuracast/azuracast_radio/)
-[![Twitter Follow](https://img.shields.io/twitter/follow/azuracast.svg?style=social&label=Follow)](https://twitter.com/azuracast)
+[![AGPL-3.0 License](https://img.shields.io/github/license/azuracast/azuracast.svg)]()
+[![Ethical Open Source](https://img.shields.io/badge/open-ethical-%234baaaa)](https://ethicalsource.dev/)
+[![Mastodon Follow](https://img.shields.io/mastodon/follow/000062116?domain=https%3A%2F%2Ffloss.social&style=social)](https://floss.social/@AzuraCast)
+
+[![Built with Depot](https://depot.dev/badges/built-with-depot.svg)](https://depot.dev/?utm_source=AzuraCast)
 
 **AzuraCast** is a self-hosted, all-in-one web radio management suite. Using its easy installer and powerful but
 intuitive web interface, you can start up a fully working web radio station in a few quick minutes. AzuraCast works for
@@ -16,12 +17,12 @@ currently beta software.
 
 ![](https://www.azuracast.com/img/ScreenshotTour.gif)
 
-You can learn more about AzuraCast via our [Documentation](https://docs.azuracast.com/):
+You can learn more about AzuraCast via our [Documentation](https://www.azuracast.com/docs):
 
-- [About AzuraCast](https://docs.azuracast.com/en/home#core-features)
-- [Included Software](https://docs.azuracast.com/en/home#whats-included)
-- [System Requirements](https://docs.azuracast.com/en/getting-started/requirements)
-- [Installation](https://docs.azuracast.com/en/getting-started/installation)
+- [About AzuraCast](https://www.azuracast.com/docs/#core-features)
+- [Included Software](https://www.azuracast.com/docs/#whats-included)
+- [System Requirements](https://www.azuracast.com/docs/getting-started/requirements/)
+- [Installation](https://www.azuracast.com/docs/getting-started/installation/)
 
 ## Live Demo
 
@@ -35,20 +36,22 @@ Want to see AzuraCast for yourself? Visit our demo site at [demo.azuracast.com](
 To install AzuraCast, you should have a basic understanding of the Linux shell terminal. Once installed, every aspect of
 your radio station can be managed via AzuraCast's web interface.
 
-Follow our **[installation guide](https://docs.azuracast.com/en/getting-started/installation)** for instructions on how
+Follow our **[installation guide](https://www.azuracast.com/docs/getting-started/installation/)** for instructions on
+how
 to install AzuraCast on your own server.
 
 ## License
 
 AzuraCast is licensed under
-the [Apache license, version 2.0](https://github.com/AzuraCast/AzuraCast/blob/main/LICENSE.txt). This project is free
+the [Affero GNU General Public License (AGPL) version 3.0](https://github.com/AzuraCast/AzuraCast/blob/main/LICENSE.md).
+This project is free
 and open-source software, and pull requests are always welcome.
 
 ## Need Help?
 
 If you need help with AzuraCast, the first place you should visit is
-our [Support page](https://docs.azuracast.com/en/user-guide/troubleshooting)
-, which features solutions to a number of commonly encountered issues and questions, as well as instructions on how to
+our [Support page](https://www.azuracast.com/docs/help/troubleshooting/), which features solutions to a number of
+commonly encountered issues and questions, as well as instructions on how to
 check your server's log files for more details. If you do need our help via GitHub, supplying these logs is absolutely
 essential in helping us diagnose and resolve your issue.
 
@@ -72,8 +75,9 @@ We frequently post to social media any time there are significant updates to our
 should be aware of, or upcoming changes to third-party software. You can get these updates in a more timely fashion by
 following our accounts:
 
-- On Twitter at [@AzuraCast](https://twitter.com/azuracast), or
-- On Mastodon at [@AzuraCast@fosstodon.org](https://fosstodon.org/@AzuraCast)
+- On Bluesky at [@azuracast.com](https://bsky.app/profile/azuracast.com)
+
+- On Mastodon at [@AzuraCast@floss.social](https://floss.social/@AzuraCast)
 
 If you are an AzuraCast user, station owner, developer or other contributor, you can also join our Discord community,
 where you can ask questions, share your station and more:
@@ -88,14 +92,15 @@ location.
 
 We would like to thank the following organizations for their support of AzuraCast's ongoing development:
 
-- [DigitalOcean](https://m.do.co/c/21612b90440f) for generously providing the server resources we use for our
-  demonstration instance, our staging and testing environments, and more
 - [JetBrains](https://www.jetbrains.com/) for making our development faster, easier and more productive with tools like
   PhpStorm
 - [CrowdIn](https://crowdin.com/) for giving us a simple and powerful tool to help translate our application for users
   around the world
 - [Netlify](https://www.netlify.com/) for supporting open-source software like ours and for serving as the host of our
-  primary [azuracast.com](https://www.azuracast.com/) web site.
+  primary [azuracast.com](https://www.azuracast.com/) website.
+- [BrowserStack](https://www.browserstack.com/) for giving us tools to help test our software's accessibility and
+  features across multiple browsers and operating systems.
+- [Depot](https://depot.dev/?utm_source=AzuraCast) for powering our Docker image builds.
 
 - The creators and maintainers of the many free and open-source tools that AzuraCast is built on, who have done so much
   to help move FOSS forward
